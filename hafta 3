@@ -1,0 +1,136 @@
+FORM1.CS
+namespace anaCocukForm
+{
+    public partial class Form1 : Form
+    {
+        //form1in üyeleri
+        Form3 frm3 = new Form3();
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form2 frm2 = new Form2();
+            frm2.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            frm3.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //Form3 gizle
+            frm3.Hide();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Form4 frm4 = new Form4();
+            frm4.ShowDialog();
+            /*
+             * ShowDialog formu en üstte gösterir ve diğer formlara
+             * geçişi engeller
+             * Kapatılana kadar diğer formlara geçilemez
+             */
+        }
+    }
+}
+Ders Başı Form1.cs
+namespace hafta3
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+
+            // Formun başlangıç ayarları
+            this.MinimizeBox = true;
+            this.MaximizeBox = true;
+            this.ControlBox = true;
+
+            // Kenar stili: boyutlandırılabilir
+            this.FormBorderStyle = FormBorderStyle.Sizable;
+
+            // Pencere başlangıç durumu
+            this.WindowState = FormWindowState.Normal;
+
+            // Başlangıç konumu
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = new Point(400, 300);
+
+            // Formun eni ve boyu
+            this.Size = new Size(400, 400);
+
+            // Form başlığı
+            this.Text = "Form1'in özellikleri";
+
+            // Formun klavye olaylarını yakalaması
+            this.KeyPreview = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("FORMU ONAYLADINIZ!");
+        }
+
+        private void iptal_fonksiyonu(object sender, EventArgs e)
+        {
+            MessageBox.Show("FORMU İPTAL ETTİNİZ!");
+        }
+
+        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Basılan tuşu öğren
+            char tus = e.KeyChar;
+
+            // ASCII değerini öğren
+            byte ascii = (byte)tus;
+
+            // Label üzerinde göster
+            label1.Text = "Basılan Tuş: " + tus.ToString()
+                + " , ASCII Değeri: " + ascii.ToString();
+
+            // ASCII değeri 24 ise programdan çık
+            if (ascii == 24)
+            {
+                Application.Exit();
+            }
+            private void Form1_KeyDown(object sender, KeyEventArgs);
+            {//Bir tuş aşağa olayı oldu :
+                label2.Text =
+                    $"KeyCode:{e.KeyCode}\n"
+                    +$"KeyCode:{e.KeyData}\n"
+                    +$"KeyCode:{e.KeyValue}\n"
+                /* KeyCode : Klavyede tuşlardan hangisine basıldı.
+                 * KeyData : KeyCode ile birlikte (CTRL,ALT,SHİFT)
+                 * tuşlarından hangisine basıldığını verir.
+                 * KeyValue : Tuş kombinasyonunun (CTRL-X) ascii değerini
+                 * verir.
+                 */
+                if (e.Control) label3.Text = "CTRL";
+                else if (e.Shift) label3.Text = "SHIFT";
+                else if (e.Alt) Label3.text = "ALT";
+
+                if(e.Control) // eğer CTRL Basıldıysa
+                {
+                    if(e.KeyCode==Keys.CapsLock)
+                    {//Eğer caps lock basıldıysa 
+                        this.Close();
+
+                }
+
+
+        }
+
+    }
+}
